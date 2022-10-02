@@ -25,4 +25,8 @@ int main(void)
     }
     else
         printf("error creation window\n");
+
+// loading main img
+SDL_Surface *image = NULL;
+
 }
