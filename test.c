@@ -25,7 +25,9 @@ int main(void)
         printf("error creation window\n");
 
 // loading main img
-/*SDL_Texture *image = NULL;
+
+/* ---------------------- CODE DE BASE QUE T'AVAIS FAIT HIER : ----------------------------------------------
+SDL_Texture *image = NULL;
 
 image = IMG_LoadTexture(SDL_Renderer *renderer, const char *test.jpg );
 if (!image)
@@ -37,6 +39,8 @@ if(window)
     SDL_DestroyWindow(window);
 }*/
 
+
+/* ---------------------- BON CODE AVEC UNE SEULE ERREUR :  -------------------------------------------------
 SDL_Surface *SDL_LoadBMP(const char* (file), "test.bmp"); 
 SDL_Surface * tmp = NULL;
 SDL_Texture *texture = NULL;
@@ -53,5 +57,17 @@ if(NULL == texture)
 {
     fprintf(stderr, "erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
     return(0);
+}*/
+
+
+//----------------------- CA COMPILE MAIS CA AFFICHE L'IMAGE VITE FAIT : -------------------------------------
+SDL_Surface* image = SDL_LoadBMP("test.bmp");
+if(!image)
+{
+    printf("Erreur de chargement de l'image : %s",SDL_GetError());
+    return -1;
 }
+SDL_Texture* monImage = SDL_CreateTextureFromSurface(renderer,image);  //La texture monImage contient maintenant l'image importée
+SDL_FreeSurface(image);
+
 }
