@@ -1,73 +1,45 @@
 #include <SDL2/SDL.h>
-#include <stdio.h>
 #include <SDL2/SDL_image.h> 
-#include <stdlib.h> 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+
+// use to compil : gcc -Wall -Wextra -Werror -lSDL2 -lSDL2_image test.c
+
+//                     === UPDATE ===                     
+// display ok, but need to focus on event right now and also
+// refont of the code; secure function, etc..
+
 
 int main(void)
 {
+    SDL_Window      *window = NULL;
+    SDL_Renderer    *renderer = NULL;
+    SDL_Surface     *image = NULL;
+    SDL_Texture     *texture = NULL;
+    char            *path_image = "test.jpg";
+
     // init SLD
-    if (SDL_Init(SDL_INIT_VIDEO) != 0)
-    {
-        printf("Error initialisation SDL\n");
-        return (0);
-    }
-    else
-        printf("SDL initalised successfull\n");
+    SDL_Init(SDL_INIT_VIDEO);
+    window = SDL_CreateWindow("Zeltat", 0,0, 700, 400, SDL_WINDOW_SHOWN);
 
-    // init window SDL
-    SDL_Window *window = NULL;
-    SDL_Renderer *renderer;
-    window = SDL_CreateWindow("Zeltat", 0,0, 640, 480, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    image = IMG_Load(path_image);
+    texture = SDL_CreateTextureFromSurface(renderer, image);
 
-  
-    if (window == NULL)
-        printf("error creation window\n");
-
-// loading main img
-
-/* ---------------------- CODE DE BASE QUE T'AVAIS FAIT HIER : ----------------------------------------------
-SDL_Texture *image = NULL;
-
-image = IMG_LoadTexture(SDL_Renderer *renderer, const char *test.jpg );
-if (!image)
-    printf("error loading image\n");
-
-if(window)
-{
-    SDL_Delay(120000);
+    while (1)
+    {
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        SDL_RenderPresent(renderer);
+    }
+ 
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(image);
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-}*/
+ 
+    SDL_Quit();
 
-
-/* ---------------------- BON CODE AVEC UNE SEULE ERREUR :  -------------------------------------------------
-SDL_Surface *SDL_LoadBMP(const char* (file), "test.bmp"); 
-SDL_Surface * tmp = NULL;
-SDL_Texture *texture = NULL;
-
-tmp = SDL_LoadBMP("test.bmp");
-if(NULL == tmp)
-{
-    fprintf(stderr, "erreur SDL_LoadBMP : %s", SDL_GetError());
-    return(0);
-}
-texture = SDL_CreateTextureFromSurface(renderer,tmp);
-SDL_FreeSurface(tmp);
-if(NULL == texture)
-{
-    fprintf(stderr, "erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
-    return(0);
-}*/
-
-
-//----------------------- CA COMPILE MAIS CA AFFICHE L'IMAGE VITE FAIT : -------------------------------------
-SDL_Surface* image = SDL_LoadBMP("test.bmp");
-if(!image)
-{
-    printf("Erreur de chargement de l'image : %s",SDL_GetError());
-    return -1;
-}
-SDL_Texture* monImage = SDL_CreateTextureFromSurface(renderer,image);  //La texture monImage contient maintenant l'image importée
-SDL_FreeSurface(image);
-
+    return (0);
 }

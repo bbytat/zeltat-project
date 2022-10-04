@@ -1,7 +1,12 @@
-/* 
+
+CONCEPTION:
+
 - sprite : 32x32
 - format procreate JPG puis convertir en bitmap
 - 1280x720
 
+
+CONTEXT:
+
 - monstres sur la map
-- debloquer sur le sol des */
+- debloquer sur le sol des utils
