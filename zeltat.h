@@ -31,5 +31,6 @@ typedef struct	s_init
 /********************* PROTOTYPES *********************/
 
 int	init_SDL(t_init *SDL);
+void play(void);
 
 #endif

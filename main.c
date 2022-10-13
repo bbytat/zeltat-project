@@ -53,6 +53,11 @@ int main(void)
                 quit = 0;
                 break ;
             }
+            if (event.key.keysym.scancode == 40 && enter == 0)
+            {
+                play();
+                break ;
+            }
             if (event.key.keysym.scancode == SDL_SCANCODE_UP)
             {
                 menu_play(&SDL);
