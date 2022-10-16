@@ -14,6 +14,7 @@
 # define SCREEN_HEIGHT 550
 # define PATH_MENU_PLAY "./img/play_menu.png"
 # define PATH_MENU_QUIT "./img/quit_menu.png"
+# define PATH_MENU "./img/menu.png"
 
 /********************* STRUCTURES *********************/
 
@@ -21,10 +22,10 @@ typedef struct	s_init
 {
 	SDL_Window		*win;
 	SDL_Renderer    *renderer;
-    SDL_Surface     *menu_play;
-    SDL_Surface     *menu_quit;
+    SDL_Surface     *image;
     SDL_Texture     *texture_menu_play;
     SDL_Texture     *texture_menu_quit;
+    SDL_Texture     *texture_menu;
 
 } t_init;
 
@@ -32,5 +33,7 @@ typedef struct	s_init
 
 int	init_SDL(t_init *SDL);
 void play(void);
+void menu(void);
+
 
 #endif

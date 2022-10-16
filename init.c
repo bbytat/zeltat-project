@@ -13,3 +13,14 @@ int init_SDL(t_init *SDL)
         return (0);
     return (1);
 }
+    void    menu_play(t_init *SDL)
+{
+    SDL_RenderClear(SDL->renderer);
+    SDL_RenderCopy(SDL->renderer, SDL->texture_menu_play, 0, 0);
+}
+
+void    menu_quit(t_init *SDL)
+{
+    SDL_RenderClear(SDL->renderer);
+    SDL_RenderCopy(SDL->renderer, SDL->texture_menu_quit, 0, 0);
+}
