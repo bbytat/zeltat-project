@@ -3,7 +3,7 @@
 //SDL_RenderPresent(renderer) -> affiche le rendu;
 //SDL_RenderClear(renderer) -> efface le rendu;
 
-#include "zeltat.h"
+#include "../zeltat.h"
 
 int main()
 {

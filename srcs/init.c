@@ -1,4 +1,4 @@
-#include "zeltat.h"
+#include "../zeltat.h"
 
 int init_SDL(t_init *SDL)
 {

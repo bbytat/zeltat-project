@@ -33,7 +33,6 @@ typedef struct	s_init
 
 int	init_SDL(t_init *SDL);
 void game(t_init *SDL);
-void play(void);
 int menu(t_init *SDL);
 
 
