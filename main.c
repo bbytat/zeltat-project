@@ -14,11 +14,7 @@ int main()
         printf("Error: Failed to init SDL.\n");
         return (0);
     }
-    
-
-
     game(&SDL);
-
     SDL_DestroyRenderer(SDL.renderer);
     SDL_DestroyWindow(SDL.win);
     SDL_Quit();

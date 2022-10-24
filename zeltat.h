@@ -1,5 +1,5 @@
 #ifndef ZELTAT_H
-# define ZELTAT_H
+#define ZELTAT_H
 
 /********************* LIBRAIRIES *********************/
 
@@ -32,8 +32,9 @@ typedef struct	s_init
 /********************* PROTOTYPES *********************/
 
 int	init_SDL(t_init *SDL);
+void game(t_init *SDL);
 void play(void);
-void menu(void);
+int menu(t_init *SDL);
 
 
 #endif

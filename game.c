@@ -41,30 +41,32 @@ int loadImage(t_init *SDL)
 {
     SDL->image = IMG_Load(PATH_MENU);
     SDL->texture_menu = SDL_CreateTextureFromSurface(SDL->renderer, SDL->image);
-    SDL_FreeSurface(SDL->image)
+    SDL_FreeSurface(SDL->image);
     if (SDL->texture_menu == NULL)
-     return;
+     return(1);
 
     SDL->image = IMG_Load(PATH_MENU_PLAY);
     SDL->texture_menu_play = SDL_CreateTextureFromSurface(SDL->renderer, SDL->image);
-    SDL_FreeSurface(SDL->image)
+    SDL_FreeSurface(SDL->image);
     if (SDL->texture_menu_play == NULL)
-     return;
+     return(1);
 
     SDL->image = IMG_Load(PATH_MENU_QUIT);
     SDL->texture_menu_quit = SDL_CreateTextureFromSurface(SDL->renderer, SDL->image);
-    SDL_FreeSurface(SDL->image)
+    SDL_FreeSurface(SDL->image);
     if (SDL->texture_menu_quit == NULL)
-     return;
+     return(1);
 
      return(1);
 }
 
 void game(t_init *SDL)
 {
-    if(!loadImage(&SDL))
+    if (!loadImage(SDL))
      {
         printf("Error: Failed to load image.\n");
-        return;
+        return ;
     }
+    if (!menu(SDL))
+        return ;
 }
